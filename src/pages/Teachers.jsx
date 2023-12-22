@@ -1,5 +1,6 @@
+import { TEACHERS } from "../data/teachers";
+import { CLASSES } from "../data/classes";
 import { NavLink } from "react-router-dom";
-
 function Classes() {
   return (
     <div>
