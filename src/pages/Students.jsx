@@ -96,7 +96,7 @@ function Students() {
       <TableHeader>
         <div>Nome</div>
         <div>Email</div>
-        <div>Status</div>
+        <div>CPF</div>
         <div>Ações</div>
         <div></div>
       </TableHeader>
@@ -105,7 +105,7 @@ function Students() {
           <div>{student.name}</div>
           <div>{student.email}</div>
           <StyledStatus status={student.status}>
-            {student.status === 1 ? "Aprovado" : "Reprovado"}
+            {student.status === 1 ? "" : ""}
           </StyledStatus>
           <div>
             <button>Editar</button>
