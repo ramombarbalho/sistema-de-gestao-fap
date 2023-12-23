@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-
 function Classes() {
   return (
     <div>
