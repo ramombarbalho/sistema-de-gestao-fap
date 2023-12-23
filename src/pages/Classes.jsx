@@ -1,4 +1,3 @@
-import { CLASSES } from "../data/classes";
 import { NavLink } from "react-router-dom";
 function Classes() {
   return (
