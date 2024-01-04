@@ -1,10 +1,10 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { STUDENTS } from "../data/students";
 import { NavLink } from "react-router-dom";
 
 const TableHeader = styled.header`
   display: grid;
-  grid-template-columns: 2.2fr 2.2fr 1fr 1fr 0.6fr;
+  grid-template-columns: 2.2fr 2.2fr 1.4fr 0.6fr;
   column-gap: 2.4rem;
   align-items: center;
 
@@ -19,7 +19,7 @@ const TableHeader = styled.header`
 
 const TableRow = styled.div`
   display: grid;
-  grid-template-columns: 2.2fr 2.2fr 1fr 1fr 0.6fr;
+  grid-template-columns: 2.2fr 2.2fr 1.4fr 0.6fr;
   column-gap: 2.4rem;
   align-items: center;
 
@@ -73,17 +73,7 @@ const StyledStatus = styled.span`
   text-align: center;
   width: 11rem;
 
-  ${(props) =>
-    props.status === 1 &&
-    css`
-      background-color: #93ff93;
-    `}
-
-  ${(props) =>
-    props.status === 2 &&
-    css`
-      background-color: #ff9292;
-    `}
+  
 `;
 
 function Students() {
@@ -93,30 +83,32 @@ function Students() {
         <div>ALUNOS</div>
         <StyledNavLink to="cadastrar">CADASTRAR ALUNOS</StyledNavLink>
       </PageHeader>
-      <TableHeader>
-        <div>Nome</div>
-        <div>Email</div>
-        <div>CPF</div>
-        <div>Ações</div>
-        <div></div>
-      </TableHeader>
-      {STUDENTS.map((student) => (
-        <TableRow key={student.id}>
-          <div>{student.name}</div>
-          <div>{student.email}</div>
-          <StyledStatus status={student.status}>
-            {student.status === 1 ? "" : ""}
-          </StyledStatus>
-          <div>
-            <button>Editar</button>
-            <button>Excluir</button>
-          </div>
+      <div>
+        <TableHeader>
+          <div>Nome</div>
+          <div>Email</div>
+          <div>CPF</div>
+          <div>Ações</div>
           <div></div>
-        </TableRow>
-      ))}
+        </TableHeader>
+        {STUDENTS.map((student) => (
+          <TableRow key={student.id}>
+            <div>{student.name}</div>
+            <div>{student.email}</div>
+            <div>{student.cpf}</div>
+            <StyledStatus status={student.status}>
+              {student.status ? "Aprovado" : "Reprovado"}
+            </StyledStatus>
+            <div>
+              <button>Editar</button>
+              <button>Excluir</button>
+            </div>
+            <div></div>
+          </TableRow>
+        ))}
+      </div>
     </>
   );
 }
 
 export default Students;
-
