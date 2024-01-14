@@ -97,7 +97,7 @@ function Students() {
             <div>{student.email}</div>
             <div>{student.cpf}</div>
             <StyledStatus status={student.status}>
-              {student.status ? "Aprovado" : "Reprovado"}
+              {student.status ? "ativo" : "inativo"}
             </StyledStatus>
             <div>
               <button>Editar</button>
