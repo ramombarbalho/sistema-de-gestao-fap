@@ -66,7 +66,7 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-function Classes() {
+function Teachers() {
   return (
     <>
       <PageHeader>
@@ -99,5 +99,5 @@ function Classes() {
   );
 }
 
-export default Classes;
+export default Teachers;
 
