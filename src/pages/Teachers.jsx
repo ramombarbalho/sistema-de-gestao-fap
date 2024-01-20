@@ -1,103 +1,36 @@
 import styled from "styled-components";
 import { TEACHERS } from "../data/teachers";
-import { CLASSES } from "../data/classes";
-import { NavLink } from "react-router-dom";
+import PageHeader from "../ui/PageHeader";
+import PageTitle from "../ui/PageTitle";
+import TeachersTable from "../ui/TeachersTable";
+import { Link } from "react-router-dom";
 
-const TableHeader = styled.header`
-  display: grid;
-  grid-template-columns: 2.2fr 2.2fr 1.4fr 0.6fr;
-  column-gap: 2.4rem;
-  align-items: center;
-
-  background-color: var(--color-bg-container-secondary);
-  border-bottom: 1px solid var(--color-border);
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  padding: 1.6rem 2.4rem;
-
-  transition: all 0.3s;
-`;
-
-const TableRow = styled.div`
-  display: grid;
-  grid-template-columns: 2.2fr 2.2fr 1.4fr 0.6fr;
-  column-gap: 2.4rem;
-  align-items: center;
-
-  letter-spacing: 0.4px;
-  padding: 1.6rem 2.4rem;
-
-  background-color: var(--color-bg-container-primary);
-  border-bottom: 1px solid var(--color-border);
-  letter-spacing: 0.4px;
-  padding: 1.6rem 2.4rem;
-
-  transition: all 0.3s;
-`;
-
-const PageHeader = styled.header`
+const Button = styled(Link)`
+  border-radius: 8px;
+  font-size: 1.4rem;
+  background-color: #00ff84;
+  color: #222;
+  height: 4rem;
+  width: fit-content;
+  padding: 0 3rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
 `;
 
-const StyledNavLink = styled(NavLink)`
-  &:link,
-  &:visited {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    background-color: var(--color-bg-container-primary);
-
-    border-radius: 5px;
-    color: var(--color-text);
-    font-size: 1.6rem;
-    font-weight: 500;
-    padding: 1.2rem 2.4rem;
-    transition: all 0.3s;
-  }
-
-  &:hover,
-  &:active,
-  &.active:link,
-  &.active:visited {
-    color: var(--color-hover);
-    background-color: var(--color-bg-container-secondary);
-  }
-`;
-
-function Teachers() {
+function Classes() {
   return (
     <>
       <PageHeader>
-        <div>PROFESSORES</div>
-        <StyledNavLink to="cadastrar">CADASTRAR PROFESSORES</StyledNavLink>
+        <PageTitle>PROFESSORES</PageTitle>
+        <Button to="cadastrar">CADASTRAR PROFESSORES</Button>
       </PageHeader>
-      <div>
-        <TableHeader>
-          <span>NOME</span>
-          <span>EMAIL</span>
-          <span>TELEFONE</span>
-          <span>TURMA</span>
-        </TableHeader>
-        {TEACHERS.map((t) => (
-          <TableRow key={t.name}>
-            <span>{t.name}</span>
-            <span>{t.email}</span>
-            <span>{t.phone}</span>
-            <span>
-              {CLASSES.filter((c) => c.teacher === t.name).length
-                ? CLASSES.filter((c) => c.teacher === t.name)
-                    .map((c) => c.id)
-                    .join(" - ")
-                : "PENDENTE"}
-            </span>
-          </TableRow>
-        ))}
-      </div>
+      <TeachersTable teachers={TEACHERS} />
     </>
   );
 }
 
-export default Teachers;
-
+export default Classes;

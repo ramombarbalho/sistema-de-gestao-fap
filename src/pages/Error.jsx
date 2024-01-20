@@ -1,5 +1,5 @@
 function Error() {
-  return <div>ERROR</div>;
+  return <div>Error</div>;
 }
 
 export default Error;
